@@ -182,7 +182,7 @@
                 isNum = true;
             } else {
                 isNum = false;
-                i = i + arr.length;  
+                i = i + arr.length;
             }
         }
 
@@ -208,12 +208,14 @@
                 parseInt($("#q10").val().trim())
             ]
         }
-        
+
         if (isArrOfNum(newFriendData.scores)) {
-            $.post("/api/friends", newFriendData,
-            function (data) {
-               alert(`Best Match: ${data.name}!! You are now friends`);
-            })
+            $.post("/api/friends", newFriendData)
+                .then(function (data) {
+                    console.log()
+                    alert(`Best Match: ${data.name}!! You are now friends`);
+                })
+
         } else {
             alert("All questions need to be answered before submitting")
         }
